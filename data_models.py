@@ -4,12 +4,10 @@ from typing import Dict, List, Optional
 import json
 import os
 import pickle
-
 @dataclass
 class MeterReading:
     timestamp: datetime
     value: float
-
 @dataclass
 class Account:
     meter_id: str
@@ -18,7 +16,6 @@ class Account:
     region: str
     area: str
     readings: Dict[str, List[MeterReading]] = field(default_factory=dict)
-
 class Storage:
     def __init__(self):
         self.accounts: Dict[str, Account] = {}
@@ -136,7 +133,6 @@ class Storage:
         except Exception as e:
             print(f"Error saving data: {e}")
             return False
-
     def archive_daily_data(self):
         """Archive current day's data"""
         try:
@@ -169,6 +165,5 @@ class Storage:
         except Exception as e:
             print(f"Error archiving data: {e}")
             return False
-
 # Global storage instance
 storage = Storage()
